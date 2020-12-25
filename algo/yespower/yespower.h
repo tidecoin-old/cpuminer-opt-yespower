@@ -33,6 +33,10 @@
 #include <stdint.h>
 #include <stdlib.h> /* for size_t */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * Internal type used by the memory allocator.  Please do not use it directly.
  * Use yespower_local_t instead.
@@ -50,7 +54,7 @@ typedef yespower_region_t yespower_local_t;
 /*
  * Type for yespower algorithm version numbers.
  */
-typedef enum { YESPOWER_0_5 = 5, YESPOWER_0_9 = 9 } yespower_version_t;
+typedef enum { YESPOWER_0_5 = 5, YESPOWER_1_0 = 10 } yespower_version_t;
 
 /**
  * yespower parameters combined into one struct.
@@ -119,4 +123,18 @@ extern int yespower(yespower_local_t *local,
 extern int yespower_tls(const uint8_t *src, size_t srclen,
     const yespower_params_t *params, yespower_binary_t *dst);
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* !_YESPOWER_H_ */
+
+void yespower_hash(const char *input, char *output,uint32_t len);
+void yespowerR16_hash(const char *input, char *output);
+void yespowerYTN_hash(const char *input, char *output);
+void yespower_0_5_R8_hash(const char *input, char *output);
+void yespower_0_5_R8G_hash(const char *input, char *output);
+void yespower_0_5_R16_hash(const char *input, char *output);
+void yespower_0_5_R24_hash(const char *input, char *output);
+void yespower_0_5_R32_hash(const char *input, char *output);
+
